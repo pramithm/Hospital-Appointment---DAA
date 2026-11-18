@@ -42,10 +42,10 @@ export function QueueDashboardPage() {
         <div>
           <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2.5">
             <Compass className="text-teal-600 dark:text-teal-400" size={28} />
-            Patient Flow Optimization (Dijkstra's Algorithm)
+            Patient Flow & Route Optimizer
           </h1>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Dynamic shortest-path routing across hospital departments powered by Min-Heap Priority Queue.
+            Live department transit tracking, occupancy monitoring, and automated low-wait route guidance.
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export function QueueDashboardPage() {
             className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800/60 hover:bg-amber-500/20 transition-all shadow-xs"
           >
             <AlertTriangle size={15} />
-            Simulate Rush Hour Bottleneck
+            Simulate Rush Hour Surge
           </button>
           <button
             onClick={resetCongestion}
@@ -71,7 +71,7 @@ export function QueueDashboardPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
           <div className="flex items-center justify-between text-slate-400 text-xs font-medium mb-1">
-            <span>Dijkstra Avg Transit</span>
+            <span>Average Patient Transit</span>
             <Clock size={16} className="text-teal-500" />
           </div>
           <div className="text-2xl font-black text-slate-800 dark:text-slate-100">
@@ -79,7 +79,7 @@ export function QueueDashboardPage() {
           </div>
           <div className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 mt-1">
             <TrendingDown size={14} />
-            {simulationMetrics.timeSavedPercent}% faster than static
+            {simulationMetrics.timeSavedPercent}% faster than fixed routes
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export function QueueDashboardPage() {
             -{simulationMetrics.timeSavedMinutes}m
           </div>
           <div className="text-xs text-slate-400 mt-1">
-            Static avg: {simulationMetrics.staticRoutingAvgTimeMinutes}m
+            Standard route avg: {simulationMetrics.staticRoutingAvgTimeMinutes}m
           </div>
         </div>
 
@@ -111,14 +111,14 @@ export function QueueDashboardPage() {
 
         <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
           <div className="flex items-center justify-between text-slate-400 text-xs font-medium mb-1">
-            <span>Algorithm Latency</span>
+            <span>Routing Response</span>
             <Activity size={16} className="text-rose-500" />
           </div>
           <div className="text-2xl font-black text-indigo-600 dark:text-indigo-400">
             {activePathResult.computationTimeMs}ms
           </div>
           <div className="text-xs text-slate-400 mt-1">
-            O((V + E) log V) via MinHeap
+            Instant automated pathing
           </div>
         </div>
       </div>
@@ -204,7 +204,7 @@ export function QueueDashboardPage() {
               Live Patient Transit Roster & Journey Tracker
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Patients currently in-transit or receiving care along Dijkstra-optimized hospital routes.
+              Patients currently in transit or receiving care across hospital departments.
             </p>
           </div>
           <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/40 px-2.5 py-1 rounded-full">
@@ -220,9 +220,9 @@ export function QueueDashboardPage() {
                 <th className="pb-3">Severity & Complaint</th>
                 <th className="pb-3">Current Station</th>
                 <th className="pb-3">Next Required Step</th>
-                <th className="pb-3">Dijkstra Planned Route</th>
+                <th className="pb-3">Planned Route</th>
                 <th className="pb-3">Est. Latency</th>
-                <th className="pb-3 text-right pr-2">Dynamic Actions</th>
+                <th className="pb-3 text-right pr-2">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">

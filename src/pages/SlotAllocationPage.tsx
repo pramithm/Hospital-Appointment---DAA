@@ -80,10 +80,10 @@ export function SlotAllocationPage() {
       <div>
         <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
           <Route className="text-teal-600 dark:text-teal-400" size={28} />
-          Dynamic Route Optimization & Bottleneck Bypass
+          Route Optimizer & Congestion Bypass
         </h1>
         <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-          DAA Demonstration: How Dijkstra’s algorithm dynamically detects congested departments and routes patients through faster alternative corridors.
+          Compare traditional fixed hospital routing against automated congestion bypass routing.
         </p>
       </div>
 
@@ -169,16 +169,16 @@ export function SlotAllocationPage() {
           <div className="flex items-center justify-between mb-4">
             <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 flex items-center gap-1.5">
               <XCircle size={14} />
-              Conventional Static / Fixed Routing
+              Traditional Fixed Routing
             </span>
             <span className="text-xs text-slate-400">Fixed Corridor Route</span>
           </div>
 
           <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">
-            Suffers From Bottleneck Delays
+            Susceptible to Department Queues
           </h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-5">
-            Static routing always sends patients down the predetermined path without checking if the department ahead is overcrowded.
+            Fixed routes follow a preset corridor sequence regardless of whether an intermediate department is experiencing heavy delays.
           </p>
 
           <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 mb-5 space-y-2">
@@ -228,7 +228,7 @@ export function SlotAllocationPage() {
           <div className="flex items-center justify-between mb-4">
             <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 flex items-center gap-1.5">
               <ShieldCheck size={14} />
-              Dijkstra Dynamic Shortest Path
+              Automated Dynamic Routing
             </span>
             <span className="text-xs font-mono font-bold text-teal-600">
               {percentFaster}% Time Saved
@@ -236,10 +236,10 @@ export function SlotAllocationPage() {
           </div>
 
           <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">
-            Intelligent Dynamic Bypass
+            Automated Congestion Bypass
           </h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-5">
-            Dijkstra's edge relaxation checks real-time congestion weights $w(u, v)$ and automatically diverts the patient around the bottleneck!
+            Continuously monitors live department wait times and immediately diverts incoming patients to faster alternative corridors.
           </p>
 
           <div className="p-4 rounded-xl bg-teal-50/50 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-900 mb-5 space-y-2">

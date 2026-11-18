@@ -58,10 +58,10 @@ export function HospitalGraphView() {
         <div>
           <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <Layers className="text-teal-600 dark:text-teal-400" size={20} />
-            Interactive Hospital Topology Map G = (V, E)
+            Hospital Department Map
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Real-time weighted graph network with live patient density & Dijkstra shortest path routing.
+            Live department occupancy, connecting corridors, and recommended patient routes.
           </p>
         </div>
 
@@ -77,7 +77,7 @@ export function HospitalGraphView() {
                   : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
               }`}
             >
-              {floor === 'all' ? 'All Wings (3D Multi-Floor)' : floor}
+              {floor === 'all' ? 'All Floors' : floor}
             </button>
           ))}
         </div>
@@ -87,22 +87,22 @@ export function HospitalGraphView() {
       <div className="flex flex-wrap items-center gap-4 text-[11px] mb-3 px-2 text-slate-600 dark:text-slate-300">
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded-full bg-emerald-500 ring-2 ring-emerald-300 dark:ring-emerald-800" />
-          <span>Source (Start)</span>
+          <span>Starting Point</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded-full bg-rose-500 ring-2 ring-rose-300 dark:ring-rose-800" />
-          <span>Target (Destination)</span>
+          <span>Destination</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-5 h-1 bg-teal-500 rounded-full shadow-sm shadow-teal-500/50" />
-          <span className="font-semibold text-teal-600 dark:text-teal-400">Dijkstra Shortest Path</span>
+          <span className="font-semibold text-teal-600 dark:text-teal-400">Recommended Route</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-4 h-1 border-b-2 border-dashed border-indigo-400" />
-          <span>Emergency Express Transit Corridor</span>
+          <span>Emergency Express Lane</span>
         </div>
         <div className="flex items-center gap-1.5 ml-auto text-slate-400">
-          <span>Click any node to set Start / End</span>
+          <span>Click any department to set Start / End</span>
         </div>
       </div>
 
@@ -356,7 +356,7 @@ export function HospitalGraphView() {
           </div>
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-teal-700 dark:text-teal-300">
-              Optimal Care Pathway (Dijkstra Min-Heap)
+              Recommended Patient Route
             </div>
             <div className="text-sm font-bold text-slate-800 dark:text-slate-100 flex flex-wrap items-center gap-1.5 mt-0.5">
               {activePathResult.nodes.map((n, idx) => (
@@ -375,21 +375,21 @@ export function HospitalGraphView() {
 
         <div className="flex items-center gap-5 text-right">
           <div>
-            <span className="text-[11px] text-slate-400 block font-medium">Total Latency</span>
+            <span className="text-[11px] text-slate-400 block font-medium">Est. Travel & Wait</span>
             <span className="text-lg font-black text-teal-600 dark:text-teal-400">
               {activePathResult.totalTimeMinutes} mins
             </span>
           </div>
           <div className="border-l border-slate-200 dark:border-slate-700 pl-4">
-            <span className="text-[11px] text-slate-400 block font-medium">Physical Distance</span>
+            <span className="text-[11px] text-slate-400 block font-medium">Walking Distance</span>
             <span className="text-sm font-bold text-slate-700 dark:text-slate-200">
               {activePathResult.totalDistanceMeters}m
             </span>
           </div>
           <div className="border-l border-slate-200 dark:border-slate-700 pl-4">
-            <span className="text-[11px] text-slate-400 block font-medium">Complexity</span>
-            <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400">
-              O((V+E)log V)
+            <span className="text-[11px] text-slate-400 block font-medium">Route Status</span>
+            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              Optimal Flow
             </span>
           </div>
         </div>

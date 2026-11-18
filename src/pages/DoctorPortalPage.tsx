@@ -115,7 +115,7 @@ export function DoctorPortalPage() {
               className="w-full accent-teal-600 cursor-pointer"
             />
             <span className="text-[10px] text-slate-400 block mt-1">
-              Adjusting adjusts edge weights $w(u, v)$ hospital-wide.
+              Higher queue length increases estimated wait times for incoming patients.
             </span>
           </div>
 

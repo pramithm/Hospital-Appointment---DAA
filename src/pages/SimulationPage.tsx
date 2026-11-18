@@ -30,10 +30,10 @@ export function SimulationPage() {
       <div>
         <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
           <FlaskConical className="text-teal-600 dark:text-teal-400" size={28} />
-          High-Throughput Dijkstra Simulation Lab
+          Hospital Flow Simulation Lab
         </h1>
         <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-          Stress-test the hospital network with synthetic patient surges and verify Min-Heap algorithmic performance.
+          Simulate patient volume surges and evaluate hospital transit times under varying loads.
         </p>
       </div>
 
@@ -64,19 +64,19 @@ export function SimulationPage() {
             {running ? (
               <>
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                <span>Relaxing Graph Edges...</span>
+                <span>Calculating Patient Routes...</span>
               </>
             ) : (
               <>
                 <Play size={16} />
-                <span>Execute Dijkstra Batch Simulation</span>
+                <span>Run Flow Simulation</span>
               </>
             )}
           </button>
         </div>
       </div>
 
-      {/* DAA Capstone Pass/Fail Criteria Badges */}
+      {/* System Operational Benchmarks */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-start gap-3">
           <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900 text-emerald-600 dark:text-emerald-400">
@@ -84,13 +84,13 @@ export function SimulationPage() {
           </div>
           <div>
             <div className="text-xs font-bold text-slate-800 dark:text-slate-100">
-              Min-Heap Latency &lt; 1.0ms
+              Response Latency &lt; 1.0ms
             </div>
             <div className="text-[11px] text-slate-400 mt-0.5">
               Measured: <strong>{simulationMetrics.avgAlgorithmExecutionMs}ms</strong>
             </div>
             <span className="inline-block mt-1.5 px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-              {heapLatencyPass ? 'PASSED — O((V+E)log V)' : 'FAILED'}
+              {heapLatencyPass ? 'PASSED — Real-time' : 'FAILED'}
             </span>
           </div>
         </div>
@@ -107,7 +107,7 @@ export function SimulationPage() {
               Measured: <strong>{simulationMetrics.timeSavedPercent}% saved</strong>
             </div>
             <span className="inline-block mt-1.5 px-2 py-0.5 rounded text-[10px] font-bold bg-teal-50 text-teal-700 border border-teal-200">
-              {timeSavingsPass ? 'PASSED — Dynamic Bypass' : 'FAILED'}
+              {timeSavingsPass ? 'PASSED — Flow Optimized' : 'FAILED'}
             </span>
           </div>
         </div>
@@ -118,13 +118,13 @@ export function SimulationPage() {
           </div>
           <div>
             <div className="text-xs font-bold text-slate-800 dark:text-slate-100">
-              Graph Connectivity
+              Department Network
             </div>
             <div className="text-[11px] text-slate-400 mt-0.5">
               All 13 departments connected
             </div>
             <span className="inline-block mt-1.5 px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
-              {graphConnectivityPass ? 'PASSED — Strongly Connected' : 'PARTIAL'}
+              {graphConnectivityPass ? 'PASSED — Online' : 'PARTIAL'}
             </span>
           </div>
         </div>
@@ -139,7 +139,7 @@ export function SimulationPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
             <span className="text-[10px] text-slate-400 block font-bold uppercase">
-              Dijkstra Avg Transit
+              Optimized Routing Avg
             </span>
             <span className="text-2xl font-black text-teal-600 dark:text-teal-400">
               {simulationMetrics.dijkstraAvgTimeMinutes}m
@@ -148,7 +148,7 @@ export function SimulationPage() {
 
           <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
             <span className="text-[10px] text-slate-400 block font-bold uppercase">
-              Static Routing Avg
+              Standard Routing Avg
             </span>
             <span className="text-2xl font-black text-rose-500">
               {simulationMetrics.staticRoutingAvgTimeMinutes}m
@@ -166,7 +166,7 @@ export function SimulationPage() {
 
           <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800">
             <span className="text-[10px] text-slate-400 block font-bold uppercase">
-              Avg Algorithm Compute
+              Avg Calculation Speed
             </span>
             <span className="text-2xl font-black text-indigo-600 dark:text-indigo-400">
               {simulationMetrics.avgAlgorithmExecutionMs}ms

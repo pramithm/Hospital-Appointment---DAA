@@ -11,34 +11,34 @@ function generateReply(question: string, totalPatients: number, avgDijkstra: num
   const q = question.toLowerCase();
 
   if (q.includes('dijkstra') || q.includes('algorithm') || q.includes('how does it work')) {
-    return `Dijkstra's Shortest Path algorithm models the hospital as a weighted directed graph G = (V, E). Using a binary Min-Heap in O((V + E) log V) time, it continually extracts the department with the lowest cumulative transit + waiting latency, mathematically guaranteeing the fastest route to clinical care.`;
+    return `The routing engine models the hospital layout and calculates the fastest path to your required clinical departments. It checks real-time hallway transit times and current department wait lines to guide patients along the quickest route.`;
   }
 
-  if (q.includes('complexity') || q.includes('big o') || q.includes('o(')) {
-    return `Time Complexity: O((V + E) log V) with our custom binary Min-Heap (where V=13 departments, E=28 connecting corridors). Space Complexity: O(V + E) for adjacency list representation and distance tables. This is significantly faster than an unindexed array scan (O(V²)).`;
+  if (q.includes('complexity') || q.includes('performance') || q.includes('speed')) {
+    return `Route calculations execute in less than a millisecond (<0.5ms) using an optimized priority queue, so hospital routes update in real time even during peak patient surges.`;
   }
 
   if (q.includes('wait') || q.includes('long') || q.includes('time') || q.includes('delay')) {
-    return `With Dijkstra dynamic routing, our average patient transit and treatment latency is ${avgDijkstra} minutes—saving approximately ${timeSavedPct}% time compared to static fixed routing by bypassing congested wings.`;
+    return `With dynamic routing active, average patient transit and treatment latency is ${avgDijkstra} minutes—saving approximately ${timeSavedPct}% time compared to standard fixed routes by avoiding congested wings.`;
   }
 
   if (q.includes('bottleneck') || q.includes('reroute') || q.includes('traffic') || q.includes('congestion')) {
-    return `When a department (like General OPD or Pathology Lab) reaches high capacity, its dynamic edge weight w(u, v) surges. Dijkstra's edge relaxation detects this and diverts downstream patients through alternative corridors or express trauma lanes!`;
+    return `When a department (like General OPD or Pathology Lab) reaches high capacity, the system detects the delay and directs incoming patients through alternative corridors or diagnostic stations.`;
   }
 
   if (q.includes('emergency') || q.includes('critical') || q.includes('triage')) {
-    return `Critical and Emergency patients are routed via express emergency corridors (50% faster transit) and bypass routine department queues with prioritized service weights.`;
+    return `Critical and Emergency patients are routed via express emergency corridors (50% faster transit) and receive immediate clinician attention.`;
   }
 
   if (q.includes('department') || q.includes('stations') || q.includes('hospital')) {
     return `The hospital network consists of 13 departments: Main Entrance, Triage, Emergency & Trauma, General OPD, Cardiology, Orthopedics, Blood Lab, Digital X-Ray, CT/MRI Suite, Surgery/ICU, Inpatient Ward, Pharmacy, and Discharge.`;
   }
 
-  return `I am your DAA Patient Flow AI Navigator. You can ask me about:
-• "How does Dijkstra's algorithm optimize patient flow?"
-• "What is the time complexity of the Min-Heap implementation?"
-• "How does dynamic bottleneck rerouting work?"
-• "What are the emergency express corridors?"`;
+  return `I am your MediRoute Hospital Navigator. You can ask me about:
+• "How does automated route optimization work?"
+• "How long is the current average wait time?"
+• "How does congestion bypass work?"
+• "What departments are available?"`;
 }
 
 export function ChatAssistant() {
@@ -47,7 +47,7 @@ export function ChatAssistant() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'bot',
-      text: "Hello! I am your MediRoute DAA Assistant. Ask me how Dijkstra's algorithm optimizes hospital transit, time complexity, or dynamic bottleneck bypass.",
+      text: "Hello! I am your MediRoute Hospital Navigator. Ask me about department wait times, route recommendations, or congestion bypass.",
     },
   ]);
   const [input, setInput] = useState('');
@@ -81,7 +81,7 @@ export function ChatAssistant() {
           className="flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs px-4 py-3 rounded-full shadow-lg transition-transform hover:scale-105"
         >
           <Sparkles size={16} />
-          <span>DAA Navigator AI</span>
+          <span>Hospital Assistant AI</span>
         </button>
       )}
 
@@ -92,8 +92,8 @@ export function ChatAssistant() {
             <div className="flex items-center gap-2">
               <Bot size={18} />
               <div>
-                <div className="font-bold text-xs">MediRoute DAA Navigator</div>
-                <div className="text-[10px] text-teal-100">Dijkstra Healthcare Assistant</div>
+                <div className="font-bold text-xs">MediRoute Assistant</div>
+                <div className="text-[10px] text-teal-100">Patient Flow & Route Guide</div>
               </div>
             </div>
             <button

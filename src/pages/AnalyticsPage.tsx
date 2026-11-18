@@ -26,10 +26,10 @@ export function AnalyticsPage() {
       <div>
         <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
           <BarChart3 className="text-teal-600 dark:text-teal-400" size={28} />
-          Hospital Flow Analytics & Algorithmic Benchmarks
+          Hospital Flow Performance & Analytics
         </h1>
         <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-          Quantitative performance evaluation: Dijkstra Shortest Path vs Static Hospital Routing.
+          Performance evaluation: Dynamic Route Optimization vs Conventional Fixed Hospital Routing.
         </p>
       </div>
 
@@ -37,7 +37,7 @@ export function AnalyticsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
           <div className="flex items-center justify-between text-xs font-semibold text-slate-400 mb-2">
-            <span>Dijkstra Avg Transit</span>
+            <span>Optimized Avg Transit</span>
             <Clock size={18} className="text-teal-500" />
           </div>
           <div className="text-3xl font-black text-slate-800 dark:text-slate-100">
@@ -198,13 +198,13 @@ export function AnalyticsPage() {
         </div>
       </div>
 
-      {/* DAA Algorithmic Scalability Benchmark */}
+      {/* Scalability Benchmark */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
         <h3 className="text-base font-bold text-slate-800 dark:text-slate-100 mb-1">
-          DAA Complexity Verification: Min-Heap Dijkstra vs Naive Linear Array
+          Processing Speed & Scalability Benchmarks
         </h3>
         <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
-          Theoretical vs Measured Execution Runtimes on Hospital Graph Network
+          Real-time processing latency and total patient transit hours saved across cohort sizes
         </p>
 
         <div className="overflow-x-auto">
@@ -212,10 +212,10 @@ export function AnalyticsPage() {
             <thead>
               <tr className="border-b border-slate-200 dark:border-slate-700 text-slate-400 uppercase tracking-wider font-semibold">
                 <th className="pb-3 pl-2">Batch Size (Patients)</th>
-                <th className="pb-3">Dijkstra + Min-Heap O((V+E)log V)</th>
-                <th className="pb-3">Naive Array Scan O(V²)</th>
-                <th className="pb-3">Total Minutes (Dijkstra)</th>
-                <th className="pb-3">Total Minutes (Static)</th>
+                <th className="pb-3">Optimized Routing Time</th>
+                <th className="pb-3">Standard Processing Time</th>
+                <th className="pb-3">Total Patient Time (Optimized)</th>
+                <th className="pb-3">Total Patient Time (Standard)</th>
                 <th className="pb-3 text-right pr-2">Overall Hospital Time Saved</th>
               </tr>
             </thead>

@@ -102,7 +102,7 @@ export function PatientEntryPage() {
           Patient Intake & Clinical Route Planning
         </h1>
         <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-          Register incoming patients and automatically compute lowest-latency clinical pathways via Dijkstra's algorithm.
+          Register incoming patients and automatically calculate the fastest clinical pathway across required departments.
         </p>
       </div>
 
@@ -254,13 +254,13 @@ export function PatientEntryPage() {
               className="w-full py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2"
             >
               <UserPlus size={16} />
-              Register Patient & Launch Dijkstra Route
+              Register Patient & Generate Care Route
             </button>
 
             {registeredSuccess && (
               <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-xs flex items-center gap-2">
                 <CheckCircle2 size={16} className="text-emerald-600" />
-                <span>Patient successfully registered into the hospital flow graph!</span>
+                <span>Patient successfully registered into the hospital system!</span>
               </div>
             )}
           </form>
@@ -271,14 +271,14 @@ export function PatientEntryPage() {
           <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
             <h2 className="text-base font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2 mb-3 pb-2 border-b border-slate-100 dark:border-slate-700">
               <Sparkles className="text-teal-500" size={18} />
-              Dijkstra Route Calculation
+              Estimated Route & Travel Time
             </h2>
 
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
                   <span className="text-[10px] uppercase font-bold text-slate-400 block">
-                    Calculated Latency
+                    Total Estimated Time
                   </span>
                   <span className="text-xl font-black text-teal-600 dark:text-teal-400">
                     {previewRoute.totalTimeMinutes}m
@@ -290,7 +290,7 @@ export function PatientEntryPage() {
 
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
                   <span className="text-[10px] uppercase font-bold text-slate-400 block">
-                    Physical Distance
+                    Walking Distance
                   </span>
                   <span className="text-xl font-black text-slate-800 dark:text-slate-100">
                     {previewRoute.totalDistanceMeters}m
@@ -337,7 +337,7 @@ export function PatientEntryPage() {
               </div>
 
               <div className="p-3 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 text-[11px] text-indigo-800 dark:text-indigo-300 font-mono">
-                Min-Heap Algorithm Computation: {previewRoute.computationTimeMs}ms
+                Route Generated in {previewRoute.computationTimeMs}ms
               </div>
             </div>
           </div>

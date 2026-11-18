@@ -31,10 +31,10 @@ export function DijkstraAlgorithmVisualizer() {
         <div>
           <h3 className="text-base font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <Binary className="text-indigo-600 dark:text-indigo-400" size={20} />
-            Dijkstra Min-Heap Execution Inspector (DAA Visualizer)
+            Route Calculation Inspector
           </h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Step-by-step trace of priority queue extraction, edge relaxation, and distance table convergence.
+            Step-by-step inspection of department checks, corridor travel times, and route selections.
           </p>
         </div>
 
@@ -44,29 +44,21 @@ export function DijkstraAlgorithmVisualizer() {
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
           >
             <Code2 size={14} />
-            {showPseudocode ? 'Hide Pseudocode' : 'View DAA Pseudocode'}
+            {showPseudocode ? 'Hide Routing Logic' : 'View Routing Logic'}
           </button>
         </div>
       </div>
 
       {showPseudocode && (
         <div className="mb-4 p-4 rounded-xl bg-slate-900 text-slate-200 text-xs font-mono overflow-x-auto leading-relaxed border border-slate-800 shadow-inner">
-          <div className="text-emerald-400 font-bold mb-1">
-            // Dijkstra Single-Source Shortest Path using Min-Heap: O((V + E) log V)
+          <div className="text-emerald-400 font-bold mb-2">
+            // Optimal Patient Routing Logic
           </div>
-          <div>1: function Dijkstra(Graph G, Source s):</div>
-          <div>2: &nbsp;&nbsp;Initialize dist[v] = ∞, prev[v] = null for all v ∈ V</div>
-          <div>3: &nbsp;&nbsp;dist[s] = 0</div>
-          <div>4: &nbsp;&nbsp;MinHeap Q = new MinHeap()</div>
-          <div>5: &nbsp;&nbsp;Q.insert(s, 0)</div>
-          <div>6: &nbsp;&nbsp;while !Q.isEmpty():</div>
-          <div>7: &nbsp;&nbsp;&nbsp;&nbsp;u = Q.extractMin() &nbsp;&nbsp;// O(log V)</div>
-          <div>8: &nbsp;&nbsp;&nbsp;&nbsp;for each neighbor v of u with edge (u, v): &nbsp;&nbsp;// Sum of degrees = O(E)</div>
-          <div>9: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w = CalculateDynamicWeight(u, v)</div>
-          <div>10: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if dist[u] + w &lt; dist[v]: &nbsp;&nbsp;// Relaxation condition</div>
-          <div>11: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dist[v] = dist[u] + w</div>
-          <div>12: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev[v] = u</div>
-          <div>13: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q.insert(v, dist[v]) &nbsp;&nbsp;// O(log V)</div>
+          <div>1. Initialize starting department travel time to 0 mins; all others set to unvisited.</div>
+          <div>2. Select the reachable department with the shortest current travel time.</div>
+          <div>3. Check all connecting corridors and add live department wait times.</div>
+          <div>4. If an alternate corridor arrives sooner, update the recommended route.</div>
+          <div>5. Repeat until the target department is reached.</div>
         </div>
       )}
 
@@ -83,7 +75,7 @@ export function DijkstraAlgorithmVisualizer() {
                 Step {currentStep?.stepNumber} of {steps.length}
               </span>
               <span className="text-xs text-slate-600 dark:text-slate-300">
-                Extracting Min Node: <strong className="text-indigo-600 dark:text-indigo-400">{currentStep?.currentNodeId}</strong> ({nodeMap[currentStep?.currentNodeId] || ''}) at cumulative dist = <strong>{currentStep?.currentDistance}m</strong>
+                Checking Station: <strong className="text-indigo-600 dark:text-indigo-400">{currentStep?.currentNodeId}</strong> ({nodeMap[currentStep?.currentNodeId] || ''}) &bull; Current Latency: <strong>{currentStep?.currentDistance}m</strong>
               </span>
             </div>
 
@@ -116,12 +108,12 @@ export function DijkstraAlgorithmVisualizer() {
             {/* Min-Heap Priority Queue Snapshot */}
             <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40">
               <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between mb-2">
-                <span>Min-Heap Q Priority Snapshot (O(log V))</span>
-                <span className="text-[10px] text-slate-400">Lowest cumulative weight at root</span>
+                <span>Priority Station Queue</span>
+                <span className="text-[10px] text-slate-400">Lowest estimated travel time first</span>
               </div>
               <div className="flex flex-wrap gap-1.5 min-h-[44px] items-center">
                 {currentStep?.heapSnapshot.length === 0 ? (
-                  <span className="text-xs text-slate-400 italic">Min-Heap is empty (Queue exhausted)</span>
+                  <span className="text-xs text-slate-400 italic">No more pending stations</span>
                 ) : (
                   currentStep?.heapSnapshot.map((item, idx) => (
                     <div
@@ -143,12 +135,12 @@ export function DijkstraAlgorithmVisualizer() {
             {/* Edge Relaxation Operations at this Step */}
             <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40">
               <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between mb-2">
-                <span>Evaluated Neighbor Relaxations (u, v)</span>
-                <span className="text-[10px] text-slate-400">dist[u] + w(u, v) &lt; dist[v]</span>
+                <span>Connecting Corridor Checks</span>
+                <span className="text-[10px] text-slate-400">Evaluating transit + wait time</span>
               </div>
               <div className="space-y-1.5 max-h-[140px] overflow-y-auto">
                 {currentStep?.relaxedEdges.length === 0 ? (
-                  <span className="text-xs text-slate-400 italic">No outgoing unvisited neighbors</span>
+                  <span className="text-xs text-slate-400 italic">No outgoing unvisited corridors</span>
                 ) : (
                   currentStep?.relaxedEdges.map((rel, idx) => (
                     <div
@@ -166,15 +158,15 @@ export function DijkstraAlgorithmVisualizer() {
                           <XCircle size={13} className="text-slate-400" />
                         )}
                         <span>→ {rel.neighborId}</span>
-                        <span className="text-[10px] text-slate-400">(w: {rel.edgeWeight}m)</span>
+                        <span className="text-[10px] text-slate-400">(+{rel.edgeWeight}m)</span>
                       </div>
                       <div className="text-[11px] font-mono">
                         {rel.relaxed ? (
                           <span className="font-semibold text-emerald-700 dark:text-emerald-400">
-                            Relaxed to {rel.newDistance}m
+                            Faster: {rel.newDistance}m
                           </span>
                         ) : (
-                          <span>Kept current ({rel.oldDistance}m)</span>
+                          <span>Current faster ({rel.oldDistance}m)</span>
                         )}
                       </div>
                     </div>

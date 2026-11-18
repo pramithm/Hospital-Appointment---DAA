@@ -36,43 +36,43 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   {
     id: 'queue-dashboard',
-    label: 'Topology Map & Flow',
+    label: 'Hospital Flow Map',
     icon: Compass,
     roles: ['admin', 'doctor', 'triage_nurse'],
   },
   {
     id: 'patient-entry',
-    label: 'Patient Intake & Routing',
+    label: 'Patient Intake',
     icon: UserPlus,
     roles: ['admin', 'triage_nurse'],
   },
   {
     id: 'doctor-portal',
-    label: 'Department Stations',
+    label: 'Department Management',
     icon: Stethoscope,
     roles: ['admin', 'doctor', 'triage_nurse'],
   },
   {
     id: 'slot-allocation',
-    label: 'Bottleneck Bypass',
+    label: 'Route Optimizer',
     icon: Route,
     roles: ['admin', 'doctor', 'triage_nurse'],
   },
   {
     id: 'analytics',
-    label: 'Algorithmic Analytics',
+    label: 'Performance Analytics',
     icon: BarChart3,
     roles: ['admin', 'doctor', 'triage_nurse'],
   },
   {
     id: 'simulation',
-    label: 'Dijkstra Simulation Lab',
+    label: 'Simulation Lab',
     icon: FlaskConical,
     roles: ['admin', 'doctor', 'triage_nurse'],
   },
   {
     id: 'documentation',
-    label: 'DAA Viva Reference',
+    label: 'Documentation & Guide',
     icon: BookOpen,
     roles: ['admin', 'doctor', 'triage_nurse'],
   },
@@ -105,7 +105,7 @@ export function Sidebar({ currentPage, onNavigate }: Props) {
             <Compass size={18} />
           </div>
           <span className="font-bold text-sm text-slate-800 dark:text-slate-100">
-            MediRoute DAA
+            MediRoute
           </span>
         </div>
         <button
@@ -142,7 +142,7 @@ export function Sidebar({ currentPage, onNavigate }: Props) {
                 MediRoute
               </div>
               <div className="text-[10px] font-semibold text-teal-600 dark:text-teal-400">
-                Dijkstra Patient Flow Optimization
+                Intelligent Patient Routing
               </div>
             </div>
           </div>
